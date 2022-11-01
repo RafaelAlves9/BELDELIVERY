@@ -2221,11 +2221,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Rafael\\Documents\\BELDELIVERY\\BELDELIVERY-API\\BELDELIVERY-API\\BELDELIVERY-API.csproj",
+      "projectUniqueName": "C:\\Users\\Rafael\\Documents\\GitHub\\BELDELIVERY\\BELDELIVERY-API\\BELDELIVERY-API\\BELDELIVERY-API.csproj",
       "projectName": "BELDELIVERY-API",
-      "projectPath": "C:\\Users\\Rafael\\Documents\\BELDELIVERY\\BELDELIVERY-API\\BELDELIVERY-API\\BELDELIVERY-API.csproj",
+      "projectPath": "C:\\Users\\Rafael\\Documents\\GitHub\\BELDELIVERY\\BELDELIVERY-API\\BELDELIVERY-API\\BELDELIVERY-API.csproj",
       "packagesPath": "C:\\Users\\Rafael\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Rafael\\Documents\\BELDELIVERY\\BELDELIVERY-API\\BELDELIVERY-API\\obj\\",
+      "outputPath": "C:\\Users\\Rafael\\Documents\\GitHub\\BELDELIVERY\\BELDELIVERY-API\\BELDELIVERY-API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Rafael\\AppData\\Roaming\\NuGet\\NuGet.Config",
