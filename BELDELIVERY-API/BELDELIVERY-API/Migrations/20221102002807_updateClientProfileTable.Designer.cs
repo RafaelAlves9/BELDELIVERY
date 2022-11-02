@@ -4,6 +4,7 @@ using BELDELIVERY_API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BELDELIVERY_API.Migrations
 {
     [DbContext(typeof(BelDeliveryContext))]
-    partial class BelDeliveryContextModelSnapshot : ModelSnapshot
+    [Migration("20221102002807_updateClientProfileTable")]
+    partial class updateClientProfileTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -57,8 +59,15 @@ namespace BELDELIVERY_API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<int>("ClientProfileId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Document")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -76,6 +85,8 @@ namespace BELDELIVERY_API.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ClientProfileId");
 
                     b.ToTable("Client");
                 });
@@ -134,14 +145,10 @@ namespace BELDELIVERY_API.Migrations
                     b.Property<string>("CellPhone")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Document")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("IdClient")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Orders")
-                        .IsRequired()
+                    b.Property<int>("Orders")
                         .HasColumnType("int");
 
                     b.Property<string>("TellPhone")
@@ -150,8 +157,7 @@ namespace BELDELIVERY_API.Migrations
                     b.Property<string>("TittleStatus")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("UpdateAt")
-                        .IsRequired()
+                    b.Property<DateTime>("UpdateAt")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -230,9 +236,8 @@ namespace BELDELIVERY_API.Migrations
                     b.Property<int>("TypeAccountAcess")
                         .HasColumnType("int");
 
-                    b.Property<string>("TypeStore")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("TypeStore")
+                        .HasColumnType("int");
 
                     b.Property<string>("UrlName")
                         .IsRequired()
@@ -326,6 +331,17 @@ namespace BELDELIVERY_API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("StoreProfile");
+                });
+
+            modelBuilder.Entity("BELDELIVERY_API.Models.Client", b =>
+                {
+                    b.HasOne("BELDELIVERY_API.Models.ClientProfile", "ClientProfile")
+                        .WithMany()
+                        .HasForeignKey("ClientProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ClientProfile");
                 });
 #pragma warning restore 612, 618
         }

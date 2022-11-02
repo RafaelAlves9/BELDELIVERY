@@ -4,6 +4,7 @@ using BELDELIVERY_API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BELDELIVERY_API.Migrations
 {
     [DbContext(typeof(BelDeliveryContext))]
-    partial class BelDeliveryContextModelSnapshot : ModelSnapshot
+    [Migration("20221102013254_updateClientTable1")]
+    partial class updateClientTable1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -59,6 +61,10 @@ namespace BELDELIVERY_API.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Document")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -132,9 +138,6 @@ namespace BELDELIVERY_API.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("CellPhone")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Document")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("IdClient")
@@ -230,9 +233,8 @@ namespace BELDELIVERY_API.Migrations
                     b.Property<int>("TypeAccountAcess")
                         .HasColumnType("int");
 
-                    b.Property<string>("TypeStore")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("TypeStore")
+                        .HasColumnType("int");
 
                     b.Property<string>("UrlName")
                         .IsRequired()

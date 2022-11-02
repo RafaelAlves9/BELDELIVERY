@@ -9,8 +9,7 @@
         public string Document { get; set; }
         public DateTime CreatedAt { get; set; }
         public int TypeAccountAcess { get; set; }
-        public int TypeStore { get; set; }
+        public string TypeStore { get; set; }
         public string UrlName { get; set; }
-
     }
 }

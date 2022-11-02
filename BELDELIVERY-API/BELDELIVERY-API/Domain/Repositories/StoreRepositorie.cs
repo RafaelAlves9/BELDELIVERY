@@ -41,10 +41,14 @@ namespace BELDELIVERY_API.Domain.Repositories
 
         public async Task<Store> Create(Store store)
         {
-            await _belDelivery.Store.AddAsync(store);
+            Store storeP = store;
+            storeP.CreatedAt = DateTime.Now;
+            storeP.TypeAccountAcess = 2;
+
+            await _belDelivery.Store.AddAsync(storeP);
             await _belDelivery.SaveChangesAsync();
 
-            return store;
+            return storeP;
         }
 
         public async Task<Store> Update(Store store, int id)

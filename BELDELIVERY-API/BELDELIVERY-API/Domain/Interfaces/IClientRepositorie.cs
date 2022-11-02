@@ -5,6 +5,7 @@ namespace BELDELIVERY_API.Domain.Interfaces
     public interface IClientRepositorie
     {
         Task<List<Client>> GetAll();
+        Task<Client> Login(string email, string password);
         Task<Client> GetById(int id);
         Task<Client> Create(Client user);
         Task<Client> Update(Client user, int id);

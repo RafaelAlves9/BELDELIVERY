@@ -8,10 +8,12 @@ namespace BELDELIVERY_API.Domain.Repositories
     public class ClientRepositorie : IClientRepositorie
     {
         private readonly BelDeliveryContext _belDelivery;
+        private readonly IClientProfileRepositorie _profile;
 
-        public ClientRepositorie(BelDeliveryContext belDelivery)
+        public ClientRepositorie(BelDeliveryContext belDelivery, IClientProfileRepositorie profile)
         {
             _belDelivery = belDelivery;
+            _profile = profile;
         }
 
         public async Task<bool> Delete(int id)
@@ -33,6 +35,19 @@ namespace BELDELIVERY_API.Domain.Repositories
         {
             return await _belDelivery.Client.ToListAsync();
         }
+        public async Task<Client> Login(string email, string password)
+        {
+            Client clientByEmail = await _belDelivery.Client.FirstOrDefaultAsync(x => x.Email == email);
+            Client clientByPassword = await _belDelivery.Client.FirstOrDefaultAsync(x => x.Password == password);
+
+            if (clientByEmail != null && clientByPassword != null && clientByEmail == clientByPassword)
+            {
+                return clientByEmail;
+            } else
+            {
+                throw new Exception("Usuário não encontrado");
+            }
+        }
 
         public async Task<Client> GetById(int id)
         {
@@ -41,10 +56,14 @@ namespace BELDELIVERY_API.Domain.Repositories
 
         public async Task<Client> Create(Client client)
         {
-            await _belDelivery.Client.AddAsync(client);
+            Client clientP = client;
+            clientP.CreatedAt = DateTime.Now;
+            clientP.TypeAccountAcess = 3;
+
+            await _belDelivery.Client.AddAsync(clientP);
             await _belDelivery.SaveChangesAsync();
 
-            return client;
+            return clientP;
         }
 
         public async Task<Client> Update(Client Client, int id)

@@ -9,12 +9,11 @@ namespace BELDELIVERY_API.Data.Mapping
         public void Configure(EntityTypeBuilder<Client> builder)
         {
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.Name).IsRequired();
-            builder.Property(x => x.Email).IsRequired();
-            builder.Property(x => x.Password).IsRequired();
-            builder.Property(x => x.Document).IsRequired();
-            builder.Property(x => x.CreatedAt).IsRequired();
-            builder.Property(x => x.TypeAccountAcess).IsRequired();
+            builder.Property(x => x.Name).IsRequired(true);
+            builder.Property(x => x.Email).IsRequired(true);
+            builder.Property(x => x.Password).IsRequired(true);
+            builder.Property(x => x.CreatedAt).IsRequired(true);
+            builder.Property(x => x.TypeAccountAcess).IsRequired(true);
         }
     }
 }

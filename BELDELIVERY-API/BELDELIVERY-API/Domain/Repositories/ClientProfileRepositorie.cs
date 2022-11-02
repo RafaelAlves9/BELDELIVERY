@@ -14,6 +14,20 @@ namespace BELDELIVERY_API.Domain.Repositories
             _belDelivery = belDelivery;
         }
 
+        public async Task<bool> DeleteByClientId(int id)
+        {
+            ClientProfile CAddressById = await GetIdClientById(id);
+
+            if (CAddressById == null)
+            {
+                throw new Exception("Usuário não encontrado");
+            }
+
+            _belDelivery.ClientProfile.Remove(CAddressById);
+            await _belDelivery.SaveChangesAsync();
+
+            return true;
+        }
         public async Task<bool> Delete(int id)
         {
             ClientProfile CAddressById = await GetById(id);
@@ -37,6 +51,11 @@ namespace BELDELIVERY_API.Domain.Repositories
         public async Task<ClientProfile> GetById(int id)
         {
             return await _belDelivery.ClientProfile.FirstOrDefaultAsync(x => x.Id == id);
+        }
+
+        public async Task<ClientProfile> GetIdClientById(int id)
+        {
+            return await _belDelivery.ClientProfile.FirstOrDefaultAsync(x => x.IdClient == id);
         }
 
         public async Task<ClientProfile> Create(ClientProfile client)

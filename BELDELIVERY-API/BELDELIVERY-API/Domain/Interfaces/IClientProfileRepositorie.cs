@@ -6,8 +6,10 @@ namespace BELDELIVERY_API.Domain.Interfaces
     {
         Task<List<ClientProfile>> GetAll();
         Task<ClientProfile> GetById(int id);
+        Task<ClientProfile> GetIdClientById(int id);
         Task<ClientProfile> Create(ClientProfile user);
         Task<ClientProfile> Update(ClientProfile user, int id);
+        Task<bool> DeleteByClientId(int id);
         Task<bool> Delete(int id);
     }
 }

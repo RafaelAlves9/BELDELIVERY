@@ -16,7 +16,7 @@ namespace BELDELIVERY_API.Controllers
         }
 
         [HttpGet("get-all")]
-        public async Task<ActionResult<List<Store>>> GetAl()
+        public async Task<ActionResult<List<Store>>> GetAll()
         {
             List<Store> stores = await _store.GetAll();
             return Ok(stores);
