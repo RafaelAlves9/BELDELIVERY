@@ -14,7 +14,6 @@ namespace BELDELIVERY_API.Data.Mapping
             builder.Property(x => x.TittleStatus).IsRequired();
             builder.Property(x => x.CellPhone).IsRequired();
             builder.Property(x => x.TellPhone).IsRequired();
-            builder.Property(x => x.MainColor).IsRequired();
             builder.Property(x => x.Rate).IsRequired();
             builder.Property(x => x.UpdateAt).IsRequired();
         }

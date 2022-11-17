@@ -16,7 +16,7 @@ namespace BELDELIVERY_API.Domain.Repositories
 
         public async Task<bool> DeleteByClientId(int id)
         {
-            ClientProfile CAddressById = await GetIdClientById(id);
+            ClientProfile CAddressById = await GetByIdClient(id);
 
             if (CAddressById == null)
             {
@@ -53,7 +53,7 @@ namespace BELDELIVERY_API.Domain.Repositories
             return await _belDelivery.ClientProfile.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<ClientProfile> GetIdClientById(int id)
+        public async Task<ClientProfile> GetByIdClient(int id)
         {
             return await _belDelivery.ClientProfile.FirstOrDefaultAsync(x => x.IdClient == id);
         }

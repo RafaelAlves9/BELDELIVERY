@@ -4,8 +4,8 @@
     {
         public int Id { get; set; }
         public int IdStore { get; set; }
+        public string Name { get; set; }
         public int Rate { get; set; }
-        public string MainColor { get; set; }
         public string TittleStatus { get; set; }
         public string Orders { get; set; }
         public string TellPhone { get; set; }

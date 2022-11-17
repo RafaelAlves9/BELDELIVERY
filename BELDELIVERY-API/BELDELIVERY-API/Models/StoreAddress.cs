@@ -10,7 +10,6 @@
         public string Distrity { get; set; }
         public string Street { get; set; }
         public string Number { get; set; }
-        public bool MainAddress { get; set; }
 
     }
 }

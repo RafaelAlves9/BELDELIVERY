@@ -33,6 +33,22 @@ namespace BELDELIVERY_API.Domain.Repositories
         {
             return await _belDelivery.Administrator.ToListAsync();
         }
+        public async Task<Administrator> Login(string email, string password)
+        {
+            Administrator adminByEmail =  await _belDelivery.Administrator.FirstOrDefaultAsync(x => x.Email == email);
+            Administrator adminByPassword = await _belDelivery.Administrator.FirstOrDefaultAsync(x => x.Password == password);
+
+            if (adminByEmail == null)
+            {
+                throw new Exception("Email não cadastrado");
+            } 
+            else if(adminByEmail == adminByPassword)
+            {
+                return adminByEmail;
+            }
+            else throw new Exception("Email ou senha incorretos");
+        }
+
 
         public async Task<Administrator> GetById(int id)
         {

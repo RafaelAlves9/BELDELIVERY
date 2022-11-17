@@ -16,7 +16,6 @@ namespace BELDELIVERY_API.Data.Mapping
             builder.Property(x => x.Distrity).IsRequired();
             builder.Property(x => x.Street).IsRequired();
             builder.Property(x => x.Number).IsRequired();
-            builder.Property(x => x.MainAddress).IsRequired();
         }
     }
 }

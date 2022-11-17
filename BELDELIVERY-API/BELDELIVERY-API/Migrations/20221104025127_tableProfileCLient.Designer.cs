@@ -4,6 +4,7 @@ using BELDELIVERY_API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BELDELIVERY_API.Migrations
 {
     [DbContext(typeof(BelDeliveryContext))]
-    partial class BelDeliveryContextModelSnapshot : ModelSnapshot
+    [Migration("20221104025127_tableProfileCLient")]
+    partial class tableProfileCLient
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -102,6 +104,9 @@ namespace BELDELIVERY_API.Migrations
 
                     b.Property<int>("IdClient")
                         .HasColumnType("int");
+
+                    b.Property<bool>("MainAddress")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Number")
                         .IsRequired()
@@ -266,6 +271,9 @@ namespace BELDELIVERY_API.Migrations
                     b.Property<int>("IdStore")
                         .HasColumnType("int");
 
+                    b.Property<bool>("MainAddress")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Number")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -298,7 +306,7 @@ namespace BELDELIVERY_API.Migrations
                     b.Property<int>("IdStore")
                         .HasColumnType("int");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("MainColor")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

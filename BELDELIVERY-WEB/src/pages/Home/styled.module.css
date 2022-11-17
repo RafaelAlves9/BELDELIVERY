@@ -1,5 +1,15 @@
-.container{
-    height: 50vh;
+.banner{
+    margin-top: 70px;
     width: 100%;
-    background-color: aquamarine;
+    height: 30vh;
+    background-image: url("/src/utilites/img/background-login.png");
+    background-size: cover;
+    background-position: center;
+}
+.container{
+    margin: 0 auto;
+    padding: 20px 0 2rem 0;
+    height: 100vh;
+    max-width: 1400px;
+    width: 100%;
 }

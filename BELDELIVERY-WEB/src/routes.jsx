@@ -16,6 +16,9 @@ function RouterList(){
           <Route path='/login' element={<Login />}/>
           <Route path='/cadastro' element={<Cadastro />}/>
           <Route path='/perfil' element={<PerfilCliente />}/>
+          <Route path='/perfil/enderecos' element={<PerfilCliente />}/>
+          <Route path='/perfil/pedidos' element={<PerfilCliente />}/>
+          <Route path='/perfil/alterar-senha' element={<PerfilCliente />}/>
           <Route path='/lojas' element={<PerfilLoja />}/>
           <Route path='/lojas/:store' element={<PerfilLoja />}/>
           <Route path='/lojas/:store/gerenciar-pedidos' element={<PerfilLoja />}/>

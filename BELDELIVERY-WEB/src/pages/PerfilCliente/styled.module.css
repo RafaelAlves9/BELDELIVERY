@@ -1,5 +1,91 @@
 .container{
-    height: 50vh;
+    margin: 0 auto;
+    padding: 100px 0 50px 0;
+    min-height: 100vh;
     width: 100%;
-    background-color: aquamarine;
+    background-color: #bbbbbb21;
+}
+.tittle{
+    margin: 0 auto;
+    padding: 2rem 0;
+    max-width: 1100px;
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.tittle > h2{
+    font-size: 2rem;
+    color: dodgerblue;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.tittle > button{
+    padding: .5rem 1.2rem;
+    border-radius: 5px;
+    background-color: dodgerblue;
+    border: none;
+    outline: none;
+    color: white;
+}
+
+.container_form_user{
+    margin: 0 auto;
+    width: 95%;
+    max-width: 1100px;
+    height: 550px;
+    padding: 3rem;
+    border: 1px solid #bbbbbb52;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.144);
+}
+.container_form_user > div{
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+}
+
+.container_form_user > div > span:first-of-type{
+    font-weight: bold;
+}
+
+.switch_route_perfil{
+    margin: 0 auto;
+    max-width: 1050px;
+    width: 90%;
+    height: 45px;
+
+    display: flex;
+}
+.switch_route_perfil > div {
+    height: 100%;
+    width: 170px;
+    padding-top: .3rem;
+    margin-left: .3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #bbbbbb25;
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+.card_switch > p{
+    font-size: 1.1rem;
+}
+.card_switch_active{
+    height: 100%;
+    width: 170px;
+    padding-top: .3rem;
+    margin-left: .3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+
+    cursor: pointer;
+    background-color: black;
 }

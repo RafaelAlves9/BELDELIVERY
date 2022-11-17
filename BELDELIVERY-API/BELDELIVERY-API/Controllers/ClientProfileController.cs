@@ -29,6 +29,13 @@ namespace BELDELIVERY_API.Controllers
             return Ok(clientById);
         }
 
+        [HttpGet("get-by-idclient/{id}")]
+        public async Task<ActionResult<ClientProfile>> GetByIdClient(int id)
+        {
+            ClientProfile clientById = await _profile.GetByIdClient(id);
+            return Ok(clientById);
+        }
+
         [HttpPost("create")]
         public async Task<ActionResult<ClientProfile>> Create([FromBody] ClientProfile client)
         {
