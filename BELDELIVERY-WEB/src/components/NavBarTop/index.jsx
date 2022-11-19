@@ -13,6 +13,7 @@ const NavBarTop = () => {
 
     const ItensDropDownCategorias = ["Hambugueria", "Sorveteria", "Bar"];
 
+
     return(
         <>
             <CarrinhoModal openModalProps={openModalCarrinho}/>

@@ -6,6 +6,8 @@ import PerfilLoja from "./pages/PerfilLoja";
 import Login from "./pages/Login";
 import Cadastro from "./pages/Cadastro";
 import CadastroLoja from "./pages/CadastroLoja";
+import OrdersClient from "./pages/OrdersClient";
+import Login1 from "./pages/Login";
 
 function RouterList(){
     return(
@@ -13,11 +15,11 @@ function RouterList(){
         <Routes>
           <Route path='/' element={<HomePage />}/>
           <Route path='/home' element={<HomePage />}/>
-          <Route path='/login' element={<Login />}/>
+          <Route path='/login' element={<Login1 />}/>
           <Route path='/cadastro' element={<Cadastro />}/>
           <Route path='/perfil' element={<PerfilCliente />}/>
           <Route path='/perfil/enderecos' element={<PerfilCliente />}/>
-          <Route path='/perfil/pedidos' element={<PerfilCliente />}/>
+          <Route path='/perfil/pedidos' element={<OrdersClient />}/>
           <Route path='/perfil/alterar-senha' element={<PerfilCliente />}/>
           <Route path='/lojas' element={<PerfilLoja />}/>
           <Route path='/lojas/:store' element={<PerfilLoja />}/>

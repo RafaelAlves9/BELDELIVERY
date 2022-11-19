@@ -7,9 +7,8 @@
     background-position: center;
 }
 .container{
-    margin: 0 auto;
-    padding: 20px 0 2rem 0;
+    padding-left: 20rem;
     height: 100vh;
-    max-width: 1400px;
+    max-width: 1600px;
     width: 100%;
 }

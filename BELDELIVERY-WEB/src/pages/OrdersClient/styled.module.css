@@ -28,21 +28,23 @@
 .container_form_user{
     width: 95%;
     height: 550px;
-    padding: 3rem;
+    padding: 1rem;
     border: 1px solid #bbbbbb52;
     background-color: white;
     border-radius: 15px;
     box-shadow: 2px 2px rgba(0, 0, 0, 0.144);
 }
-.container_form_user > div{
-    height: 50px;
+.card_order{
+    height: 80px;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
+    background-color: rgba(0, 0, 0, 0.411);
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.144);
 }
 
 .container_form_user > div > span:first-of-type{
     font-weight: bold;
+}
+
+tr, td{
+    text-align: center;
 }
