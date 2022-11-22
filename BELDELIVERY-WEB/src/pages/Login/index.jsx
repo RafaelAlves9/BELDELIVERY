@@ -4,6 +4,7 @@ import css from "./styled.module.css";
 import { useState } from "react";
 import axios from "axios";
 import Loading from "../../components/Loading";
+import { db } from "../../services/api/firebaseConfig.js";
 
 const Login = () => {
     const [ loginType, setLoginType] = useState("");
@@ -18,31 +19,23 @@ const Login = () => {
 
     const postFormClient = () => {
         setLoading(true);
-        setTimeout(() => {
-            axios.get(`https://localhost:7221/api/Client/login?email=${formData.email}&password=${formData.password}`)
-            .then((res) => {
-                localStorage.setItem('name', res.data.name);
-                localStorage.setItem('id', res.data.id);
-                localStorage.setItem('typeAccountAcess', res.data.typeAccountAcess);
-                navigate("/");
-            })
-            .catch(() => alert("acesso negado"))
-            setLoading(false);
-        }, 1000)
+        db.collection("client").add(formData)
+        .then((res) => {
+           console.log(res);
+        })
     };
 
     const postFormStore = () => {
         setLoading(true);
-        setTimeout(() => {
-            axios.get(`https://localhost:7221/api/Store/login?email=${formData.email}&password=${formData.password}`)
-            .then((res) => {
-                localStorage.setItem('Name', res.data.name);
-                localStorage.setItem('Id', res.data.id);
-                localStorage.setItem('TypeAccountAcess', res.data.typeAccountAcess);
-            })
-            .catch(() => alert("acesso negado"))
+        axios.get(`https://localhost:7221/api/Store/login?email=${formData.email}&password=${formData.password}`)
+        .then((res) => {
+            localStorage.setItem('Name', res.data.name);
+            localStorage.setItem('Id', res.data.id);
+            localStorage.setItem('TypeAccountAcess', res.data.typeAccountAcess);
+        })
+        .catch(() => {
             setLoading(false);
-        }, 1000)
+        })
     };
 
     return(
