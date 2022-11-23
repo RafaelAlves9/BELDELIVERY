@@ -2,39 +2,57 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import css from "./styled.module.css";
 import { useState } from "react";
-import axios from "axios";
 import Loading from "../../components/Loading";
 import { db } from "../../services/api/firebaseConfig.js";
+import { emailValidate, passwordLoginValidate } from "../../services/validations/validation";
 
 const Login = () => {
-    const [ loginType, setLoginType] = useState("");
-    const [ loading, setLoading] = useState(false);
+    const [loginType, setLoginType] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [errorStatus, setErrorStatus] = useState(true);
+    const [errorMessenge, setErrorMessenge] = useState("");
 
-    const [ formData, setFormData] = useState({
+    const [formData, setFormData] = useState({
         email: "",
         password: ""
     });
 
     const navigate = useNavigate();
 
-    const postFormClient = () => {
-        setLoading(true);
-        db.collection("client").add(formData)
-        .then((res) => {
-           console.log(res);
-        })
+    const DataVerify = () => {
+        const emailValidateResponse = emailValidate(formData.email);
+        const passwordValidateResponse = passwordLoginValidate(formData.password)
+
+        if (emailValidateResponse){
+            if (passwordValidateResponse){
+                postFormClient();
+            } else setErrorMessenge(passwordValidateResponse);
+        } else setErrorMessenge(emailValidateResponse);
     };
 
-    const postFormStore = () => {
+    const postFormClient = () => {
         setLoading(true);
-        axios.get(`https://localhost:7221/api/Store/login?email=${formData.email}&password=${formData.password}`)
+        db.collection("client")
+        .where("email", "==" , formData.email)
+        .where("password", "==", formData.password)
+        .get()
         .then((res) => {
-            localStorage.setItem('Name', res.data.name);
-            localStorage.setItem('Id', res.data.id);
-            localStorage.setItem('TypeAccountAcess', res.data.typeAccountAcess);
-        })
-        .catch(() => {
+            if(res.size === 1){
+                const caminhoValue = res.docs[0]._delegate._document.data.value.mapValue.fields;
+
+                console.log(caminhoValue)
+                localStorage.setItem("clientId", res.docs[0].id)
+                localStorage.setItem("clientName", caminhoValue.name.stringValue)
+                localStorage.setItem("userType", caminhoValue.type.integerValue)
+                navigate("/");
+            }
             setLoading(false);
+        })
+        .catch(error => {
+            console.log(error);
+            setLoading(false);
+        })
+        .finally(() => {
         })
     };
 
@@ -54,7 +72,7 @@ const Login = () => {
                     </div>
 
                     <div>
-                        <Button variant="primary" onClick={() => loginType === "Client" ? postFormClient() : postFormStore()}>LOGIN</Button>
+                        <Button variant="primary" onClick={() => loginType === "Client" ? DataVerify() : DataVerify()}>LOGIN</Button>
                         <div className={css.link} onClick={() => navigate("/cadastro")}>Ainda não tem conta? Cadastre-se</div>
                     </div>
                     
@@ -67,7 +85,6 @@ const Login = () => {
                             <span>Logue como Cliente</span>
                         </div>
                     )}
-
                 </div>
            </section>
         </>

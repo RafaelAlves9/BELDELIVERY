@@ -3,20 +3,20 @@
     height: 100%;
     padding: 100px 0 20px 0;
 
-    background-color: #D93232;
+    background-color: #BFA893;
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.164);
 
     z-index: 9;
     position: fixed;
     top: 0;
     left: 0;
-    transition: all .06s;
+    transition: all .1s;
 }
 .hidde_bar{
     width: 100px;
     height: 100%;
-    padding: 100px 0 20px 0;
-    background-color: #D93232;
+    padding: 100px 0 0 0;
+    background-color: #BFA893;
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.164);
 
     z-index: 9;
@@ -24,7 +24,7 @@
     top: 0;
     bottom: 0;
     left: 0;
-    transition: all .06s;
+    transition: all .1s;
 }
 .icon_open_menu{
     width: 35px;
@@ -91,13 +91,14 @@
     width: 90%;
     font-weight: 700;
     padding: 5px;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.212);
-    transition: all .1s;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.24);
+    transition: all .33s;
+    font-size: .9rem;
 }
 .menu_items:hover{
     width: 100%;
     border-bottom: 2px solid rgba(0, 0, 0, 0.212);
-    transition: all .1s;
+    transition: all .33s;
 }
 .menu_items_hidde{
     width: 100%;
@@ -130,4 +131,3 @@
 .nav_container_hidde > div:nth-of-type(2) > div{
     cursor: pointer;
 }
-

@@ -44,8 +44,8 @@ const Cadastro = () => {
                 if(password === true){
                     createClient();
                     setErrorMesenge(null);
-                } else {setErrorMesenge(password);;};
-            } else {setErrorMesenge(email); ;};
+                } else {setErrorMesenge(password);};
+            } else {setErrorMesenge(email);};
         } else {setErrorMesenge(name); };
     };
     

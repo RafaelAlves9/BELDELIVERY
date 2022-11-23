@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import css from "./styled.module.css";
 import Loading from "../Loading";
-import axios from "axios";
-import api from "../../services/axios/axios";
+import { logout } from "../../services/validations/validation";
 
 const NavBarLeft = () => {
     const [typeUser, setTypeUser] = useState("");
@@ -14,17 +13,8 @@ const NavBarLeft = () => {
     const navigate = useNavigate();
     
     useEffect(() => {
-        setLoading(true);
-        api.get(`/clientProfile/${localStorage.getItem("id")}`)
-        .then((res) => {
-            setUserName(res.data.name);
-            setLoading(false);
-        })
-        .catch((error) => {
-            setLoading(false);
-            console.log(error);
-        })
-    }, [])
+        setUserName(localStorage.getItem("clientName"));
+    }, []);
     
     return (
         <>
@@ -71,7 +61,7 @@ const NavBarLeft = () => {
                         </div>
                     </div>
                     <div>
-                        <div onClick={() => navigate("/home")}>
+                        <div onClick={() => logout()}>
                             <img src="https://img.icons8.com/windows/40/null/exit.png"/>
                             <span>Sair</span>
                         </div>
@@ -86,7 +76,6 @@ const NavBarLeft = () => {
                                 <div className={css.container_img_avatar}>
 
                                 </div>
-                                <span>{userName}</span>
                             </div>
                             <div className={css.menu_items_hidde}>
                                 <img src="https://img.icons8.com/material-rounded/30/null/home-page.png"/>
@@ -105,7 +94,7 @@ const NavBarLeft = () => {
                             </div>
                         </div>
                         <div>
-                            <div className={css.menu_items_hidde}>
+                            <div className={css.menu_items_hidde} onClick={() => logout()}>
                                 <img src="https://img.icons8.com/windows/30/null/exit.png"/>
                             </div>
                         </div>
